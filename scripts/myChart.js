@@ -24,11 +24,18 @@ listeTitresAxes = {
     "Dernière localisation connue":1
 };
 
+// Nb d'occurences pour chaque pays de naissance d'1 artiste
 cptPaysNaissance = {};
+// Nb d'occurences pour chaque pays où 1 artiste a "réussi"
 cptPaysDebutCarriere = {};
+// Pour afficher tous les pays (distinct)
 nomPays = [];
+// Pour afficher tous les genres (distinct)
 listeGenres = [];
+// Pour stocker les genres à l'intérieur de tab de genres dans le csv
 genre = [];
+// Pour stocker la liste des artistes récupérés selon leurs genres
+listeArtistesByGenre = [];
 
 d3.csv("data/data.csv", function (error, data) {
 
@@ -43,7 +50,7 @@ d3.csv("data/data.csv", function (error, data) {
         // --------- Alimenter la bd avec tous les genres présents dans le csv--------- //  
         // Si le genre n'a pas été inséré dans la liste
         if (!listeGenres.includes(d.GenreMusique) && d.GenreMusique !== "") {
-            // Si le genre dans le csv est un tab de genres
+            // Et que le genre dans le csv est un tab de genres
             if (d.GenreMusique.includes(",")) {
                 // Alors on split le tableau
                 genre = d.GenreMusique.split(",");
@@ -60,14 +67,17 @@ d3.csv("data/data.csv", function (error, data) {
             }
         }
         
-        // --------- Classer les pays selon la fréquence --------- //
+        // --------- Classer les pays selon la fréquence d'apparition --------- //
         alimenterDico(cptPaysDebutCarriere, d.PaysNaissance);
         alimenterDico(cptPaysNaissance, d.PaysDebutCarriere);
+        
+        recupererArtisteSelonGenre("Electronic", d);
 
     });
     
-    console.log(cptPaysDebutCarriere);
-    console.log(cptPaysNaissance);
+    //console.log(cptPaysDebutCarriere);
+    //console.log(cptPaysNaissance);
+    //console.log(listeArtistesByGenre);
     
     // Extract the list of dimensions and create a scale for each.
     x.domain(dimensions = d3.keys(listeTitresAxes).filter(function (d) {
@@ -174,6 +184,30 @@ function alimenterDico(dico, paysBd) {
     } else if (Object.keys(dico).includes(paysBd)) {
         // Incrémenter de 1 le nb d'occurences
         dico[paysBd] += 1;
+    }
+}
+
+/**
+ * Permet de récupérer une liste d'artistes dont le genre musical correspond à celui donné en entrée
+ * @param {type} genre Le genre musical
+ * @param {type} data La donnée issue du csv (doit comporter les champs GenreMusique et Artiste)
+ */
+function recupererArtisteSelonGenre(genre, data){
+    // Pour stocker les genres compris dans des tableaux de genres dans le csv
+    genreIndiv = [];
+    // Si le genre est dans un tab dans le csv
+    if (data.GenreMusique.includes(",")) {
+        // Alors on éclate le tab
+        genreIndiv = data.GenreMusique.split(",");
+        // Pour chaque genre du tab
+        for (g in genreIndiv) {
+            // Si le genre n'est pas une chaine de caractères vide et qu'il correspond au genre recherché
+            if (genreIndiv[g] !== "" && genreIndiv[g] === genre){
+                listeArtistesByGenre.push(data.Artiste);
+            }
+        }
+    } else if (data.GenreMusique === genre) {
+        listeArtistesByGenre.push(data.Artiste);
     }
 }
 
