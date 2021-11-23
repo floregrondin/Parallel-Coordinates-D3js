@@ -61,8 +61,8 @@ d3.csv("data/data.csv", function (error, data) {
         }
         
         // --------- Classer les pays selon la fréquence --------- //
-        alimenterDicoPaysNaissance(d.PaysNaissance);
-        alimenterDicoPaysDebutCarriere(d.PaysDebutCarriere);
+        alimenterDico(cptPaysDebutCarriere, d.PaysNaissance);
+        alimenterDico(cptPaysNaissance, d.PaysDebutCarriere);
 
     });
     
@@ -160,38 +160,20 @@ d3.csv("data/data.csv", function (error, data) {
 /**
  * Permet d'insérer dans un dictionnaire, un pays donné et le nb de fois qu'il est apparu
  * NB : Dico composé de la manière suivante : Clé = Pays & Valeur = nb d'occurences
- * @param {type} paysBd Le nom du pays 
+ * @param {type} dico Le nom du dico à implémenter
+ * @param {type} paysBd Le nom du pays à traiter
  */
-function alimenterDicoPaysNaissance(paysBd) {
+function alimenterDico(dico, paysBd) {
     // Si le dictionnaire n'existe pas (est vide)
-    if ((!Object.keys(cptPaysNaissance).length === 0)
+    if ((!Object.keys(dico).length === 0)
             // Ou que dictionnaire existe et ne contient pas le pays
-            || (!Object.keys(cptPaysNaissance).includes(paysBd))) {
+            || (!Object.keys(dico).includes(paysBd))) {
         // Insérer le pays dans le dictionnaire
-        cptPaysNaissance[paysBd] = 1;
+        dico[paysBd] = 1;
     // Si pays déjà inséré
-    } else if (Object.keys(cptPaysNaissance).includes(paysBd)) {
+    } else if (Object.keys(dico).includes(paysBd)) {
         // Incrémenter de 1 le nb d'occurences
-        cptPaysNaissance[paysBd] += 1;
-    }
-}
-
-/**
- * Permet d'insérer dans un dictionnaire, un pays donné et le nb de fois qu'il est apparu
- * NB : Dico composé de la manière suivante : Clé = Pays & Valeur = nb d'occurences
- * @param {type} paysBd Le nom du pays 
- */
-function alimenterDicoPaysDebutCarriere(paysBd) {
-    // Si le dictionnaire n'existe pas (est vide)
-    if ((!Object.keys(cptPaysDebutCarriere).length === 0)
-            // Ou que dictionnaire existe et ne contient pas le pays
-            || (!Object.keys(cptPaysDebutCarriere).includes(paysBd))) {
-        // Insérer le pays dans le dictionnaire
-        cptPaysDebutCarriere[paysBd] = 1;
-    // Si pays déjà inséré
-    } else if (Object.keys(cptPaysDebutCarriere).includes(paysBd)) {
-        // Incrémenter de 1 le nb d'occurences
-        cptPaysDebutCarriere[paysBd] += 1;
+        dico[paysBd] += 1;
     }
 }
 
