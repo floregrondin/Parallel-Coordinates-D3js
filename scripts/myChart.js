@@ -1,4 +1,3 @@
-
 var margin = {top: 30, right: 10, bottom: 10, left: 10},
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
@@ -18,12 +17,62 @@ var svg = d3.select("body").append("svg")
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("data/cars.csv", function (error, cars) {
+// Titres des axes
+listeTitresAxes = {
+    "Lieu de naissance":1,
+    "Localisation lors de l'apogée de l'artiste":1,
+    "Dernière localisation connue":1
+};
 
+cptPaysNaissance = {};
+cptPaysDebutCarriere = {};
+nomPays = [];
+listeGenres = [];
+genre = [];
+
+d3.csv("data/data.csv", function (error, data) {
+
+    data.forEach(function (d) {
+        // --------- Alimenter la bd avec tous les pays présents dans le csv--------- // 
+        if (!nomPays.includes(d.PaysNaissance) && d.PaysNaissance !== "") {
+            nomPays.push(d.PaysNaissance);
+        } else if (!nomPays.includes(d.PaysDebutCarriere) && d.PaysDebutCarriere !== "") {
+            nomPays.push(d.PaysDebutCarriere);
+        }
+
+        // --------- Alimenter la bd avec tous les genres présents dans le csv--------- //  
+        // Si le genre n'a pas été inséré dans la liste
+        if (!listeGenres.includes(d.GenreMusique) && d.GenreMusique !== "") {
+            // Si le genre dans le csv est un tab de genres
+            if (d.GenreMusique.includes(",")) {
+                // Alors on split le tableau
+                genre = d.GenreMusique.split(",");
+                // Pour chaque genre dans le tableau
+                for (g in genre) {
+                    // Si le genre n'est pas vide et qu'il n'est pas dans la liste
+                    if(genre[g] !== "" && !listeGenres.includes(genre[g])){
+                        // On insère dans la liste des genres
+                        listeGenres.push(genre[g]);
+                    }
+                }
+            } else {
+                listeGenres.push(d.GenreMusique);
+            }
+        }
+        
+        // --------- Classer les pays selon la fréquence --------- //
+        alimenterDicoPaysNaissance(d.PaysNaissance);
+        alimenterDicoPaysDebutCarriere(d.PaysDebutCarriere);
+
+    });
+    
+    console.log(cptPaysDebutCarriere);
+    console.log(cptPaysNaissance);
+    
     // Extract the list of dimensions and create a scale for each.
-    x.domain(dimensions = d3.keys(cars[0]).filter(function (d) {
-        return d != "name" && (y[d] = d3.scale.linear()
-                .domain(d3.extent(cars, function (p) {
+    x.domain(dimensions = d3.keys(listeTitresAxes).filter(function (d) {
+        return (y[d] = d3.scale.linear()
+                .domain(d3.extent(data, function (p) {
                     return +p[d];
                 }))
                 .range([height, 0]));
@@ -33,7 +82,7 @@ d3.csv("data/cars.csv", function (error, cars) {
     background = svg.append("g")
             .attr("class", "background")
             .selectAll("path")
-            .data(cars)
+            .data(data)
             .enter().append("path")
             .attr("d", path);
 
@@ -41,7 +90,7 @@ d3.csv("data/cars.csv", function (error, cars) {
     foreground = svg.append("g")
             .attr("class", "foreground")
             .selectAll("path")
-            .data(cars)
+            .data(data)
             .enter().append("path")
             .attr("d", path);
 
@@ -107,6 +156,44 @@ d3.csv("data/cars.csv", function (error, cars) {
             .attr("x", -8)
             .attr("width", 16);
 });
+
+/**
+ * Permet d'insérer dans un dictionnaire, un pays donné et le nb de fois qu'il est apparu
+ * NB : Dico composé de la manière suivante : Clé = Pays & Valeur = nb d'occurences
+ * @param {type} paysBd Le nom du pays 
+ */
+function alimenterDicoPaysNaissance(paysBd) {
+    // Si le dictionnaire n'existe pas (est vide)
+    if ((!Object.keys(cptPaysNaissance).length === 0)
+            // Ou que dictionnaire existe et ne contient pas le pays
+            || (!Object.keys(cptPaysNaissance).includes(paysBd))) {
+        // Insérer le pays dans le dictionnaire
+        cptPaysNaissance[paysBd] = 1;
+    // Si pays déjà inséré
+    } else if (Object.keys(cptPaysNaissance).includes(paysBd)) {
+        // Incrémenter de 1 le nb d'occurences
+        cptPaysNaissance[paysBd] += 1;
+    }
+}
+
+/**
+ * Permet d'insérer dans un dictionnaire, un pays donné et le nb de fois qu'il est apparu
+ * NB : Dico composé de la manière suivante : Clé = Pays & Valeur = nb d'occurences
+ * @param {type} paysBd Le nom du pays 
+ */
+function alimenterDicoPaysDebutCarriere(paysBd) {
+    // Si le dictionnaire n'existe pas (est vide)
+    if ((!Object.keys(cptPaysDebutCarriere).length === 0)
+            // Ou que dictionnaire existe et ne contient pas le pays
+            || (!Object.keys(cptPaysDebutCarriere).includes(paysBd))) {
+        // Insérer le pays dans le dictionnaire
+        cptPaysDebutCarriere[paysBd] = 1;
+    // Si pays déjà inséré
+    } else if (Object.keys(cptPaysDebutCarriere).includes(paysBd)) {
+        // Incrémenter de 1 le nb d'occurences
+        cptPaysDebutCarriere[paysBd] += 1;
+    }
+}
 
 function position(d) {
     var v = dragging[d];
