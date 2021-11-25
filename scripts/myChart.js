@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 var margin = {top: 30, right: 10, bottom: 10, left: 10},
         width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        height = 3000 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -79,14 +79,36 @@ d3.csv("data/data.csv", function (error, data) {
     dimensions = d3.keys(listeTitresAxes);
 
     // For each dimension, I build a linear scale. I store all in a y object
-    var y = {}
-    for (i in dimensions) {
-        name = dimensions[i]
-        y[name] = d3.scalePoint()
-                .domain(data.map(function(d) { 
+    var y = {};
+    
+    for (var i = 0; i < dimensions.length; i++){
+        name = dimensions[i];
+        // Initialiser y pour pouvoir le redéfinir ensuite
+        y[name] = d3.scalePoint().range([height, 0]);
+        // Si on est sur la 1ère barre des ordonnées
+        if (i === 0){
+            y[name] = d3.scalePoint()
+                .domain(data.map(function (d) {
+                    // Récupérer les pays de naissance
                     return d.PaysNaissance;
                 }))
                 .range([height, 0])
+        // Si on est sur la 2ème barre des ordonnées
+        } else if (i === 1){
+            y[name] = d3.scalePoint()
+                    .domain(data.map(function (d) {
+                        // Récupérer les pays de "début de carrière"
+                        return d.PaysDebutCarriere;
+                    }))
+                    .range([height, 0])
+        // Si on est sur la 3ème barre des ordonnées
+        } else if (i === 2){
+            y[name] = d3.scalePoint()
+                    .domain(data.map(function (d) {
+                        return d.PaysNaissance;
+                    }))
+                    .range([height, 0])
+        }   
     }
 
     // Build the X scale -> it find the best position for each Y axis
@@ -105,10 +127,13 @@ d3.csv("data/data.csv", function (error, data) {
     // Draw the lines
     svg
             .selectAll("myPath")
-            .data(data)
+            .data(data, function (d) {
+                console.log([d.PaysNaissance, d.PaysDebutCarriere, d.PaysNaissance]);
+                return [d.PaysNaissance, d.PaysDebutCarriere, d.PaysNaissance];
+            })
             .enter().append("path")
             .attr("d", path)
-            .style("fill", "none")
+            .style("fill", "red")
             .style("stroke", "#69b3a2")
             .style("opacity", 0.5)
 
