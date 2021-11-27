@@ -25,11 +25,16 @@ genre = [];
 // Pour stocker la liste des artistes récupérés selon leurs genres
 listeArtistesByGenre = [];
 // Titres des axes
-listeTitresAxes = {
-    "Birth": 1,
-    "Famous": 1,
-    "Last known": 1
-};
+listeTitresAxes = [{
+        name: "Birth",
+        type: "String"
+    }, {
+        name: "Famous",
+        type: "String"
+    }, {
+        name: "Last known",
+        type: "String"
+    }];
 
 
 d3.csv("data/data.csv", function (error, data) {
@@ -74,9 +79,8 @@ d3.csv("data/data.csv", function (error, data) {
     //console.log(cptPaysNaissance);
     //console.log(listeArtistesByGenre);
 
-
     // Extract the list of dimensions we want to keep in the plot. Here I keep all except the column called Species
-    dimensions = d3.keys(listeTitresAxes);
+    dimensions = listeTitresAxes.map(function(d) { return d.name; });
 
     // For each dimension, I build a linear scale. I store all in a y object
     var y = {};
@@ -84,10 +88,10 @@ d3.csv("data/data.csv", function (error, data) {
     for (var i = 0; i < dimensions.length; i++){
         name = dimensions[i];
         // Initialiser y pour pouvoir le redéfinir ensuite
-        y[name] = d3.scalePoint().range([height, 0]);
+        y[name] = d3.scaleBand().range([height, 0]);
         // Si on est sur la 1ère barre des ordonnées
         if (i === 0){
-            y[name] = d3.scalePoint()
+            y[name] = d3.scaleBand()
                 .domain(data.map(function (d) {
                     // Récupérer les pays de naissance
                     return d.PaysNaissance;
@@ -95,7 +99,7 @@ d3.csv("data/data.csv", function (error, data) {
                 .range([height, 0])
         // Si on est sur la 2ème barre des ordonnées
         } else if (i === 1){
-            y[name] = d3.scalePoint()
+            y[name] = d3.scaleBand()
                     .domain(data.map(function (d) {
                         // Récupérer les pays de "début de carrière"
                         return d.PaysDebutCarriere;
@@ -103,7 +107,7 @@ d3.csv("data/data.csv", function (error, data) {
                     .range([height, 0])
         // Si on est sur la 3ème barre des ordonnées
         } else if (i === 2){
-            y[name] = d3.scalePoint()
+            y[name] = d3.scaleBand()
                     .domain(data.map(function (d) {
                         return d.PaysNaissance;
                     }))
@@ -112,13 +116,14 @@ d3.csv("data/data.csv", function (error, data) {
     }
 
     // Build the X scale -> it find the best position for each Y axis
-    x = d3.scalePoint()
+    x = d3.scaleBand()
             .range([0, width])
             .padding(1)
             .domain(dimensions);
 
     // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
     function path(d) {
+        
         return d3.line()(dimensions.map(function (p) {
             return [x(p), y[p](d[p])];
         }));
@@ -128,8 +133,17 @@ d3.csv("data/data.csv", function (error, data) {
     svg
             .selectAll("myPath")
             .data(data, function (d) {
-                console.log([d.PaysNaissance, d.PaysDebutCarriere, d.PaysNaissance]);
-                return [d.PaysNaissance, d.PaysDebutCarriere, d.PaysNaissance];
+                tab = {};
+                //Index des pays sur l'axe
+                //tab[dimensions[0]]=y[dimensions[0]](d.PaysNaissance);
+                //tab[dimensions[1]]=y[dimensions[1]](d.PaysDebutCarriere);
+                //tab[dimensions[2]]=y[dimensions[0]](d.PaysNaissance);
+
+                tab[dimensions[0]]=d.PaysNaissance;
+                tab[dimensions[1]]=d.PaysDebutCarriere;
+                tab[dimensions[2]]=d.PaysNaissance;
+                console.log(tab);
+                return tab;
             })
             .enter().append("path")
             .attr("d", path)
