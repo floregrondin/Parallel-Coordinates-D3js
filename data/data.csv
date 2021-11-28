@@ -1,5 +1,5 @@
 ﻿PaysNaissance,PaysDebutCarriere,DateNaissance,GenreMusique,Artiste
-Argentina,England,1942,"",Luciana
+Argentina,United Kingdom,1942,"",Luciana
 Argentina,France,"",Hip Hop,El Matador
 Argentina,Germany,"","Neue Deutsche Welle,Pop",Ideal
 Argentina,Italy,"","",Champions Liga
@@ -10,13 +10,13 @@ Argentina,Spain,"","Garage Rock,Punk Rock,Rock",Desakato
 Argentina,Uruguay,1890,"",Carlos Gardel
 Australia,Argentina,"","Singer-Songwriter,Rock",Sandro
 Australia,Canada,1960,"",Wendy Matthews
-Australia,England,"","",Jaws
-Australia,England,1948,"Singer-Songwriter,Ballad,Country,Pop,Soft Rock",Olivia Newton-John
-Australia,England,1949,"Pop,Rock",John Farnham
-Australia,England,1958,"",Andy Gibb
-Australia,England,1976,"Indie,Ballad",M. Craft
-Australia,England,1997,"",Grace
-Australia,England,2009,Electronic,Monarchy
+Australia,United Kingdom,"","",Jaws
+Australia,United Kingdom,1948,"Singer-Songwriter,Ballad,Country,Pop,Soft Rock",Olivia Newton-John
+Australia,United Kingdom,1949,"Pop,Rock",John Farnham
+Australia,United Kingdom,1958,"",Andy Gibb
+Australia,United Kingdom,1976,"Indie,Ballad",M. Craft
+Australia,United Kingdom,1997,"",Grace
+Australia,United Kingdom,2009,Electronic,Monarchy
 Australia,Germany,"","",Age Of Distrust
 Australia,Germany,"","",Jamie Stevens
 Australia,Germany,1978,Singer-Songwriter,Kat Frankie
@@ -28,8 +28,8 @@ Australia,Italy,"","Dance,Eurodance,Dance",Blackwood
 Australia,Mexico,1994,"",Coda
 Australia,New Zealand,1953,"",Marc Hunter
 Australia,New Zealand,1985,"",Ricki-Lee
-Australia,Scotland,1944,"Singer-Songwriter,Folk",Eric Bogle
-Australia,Scotland,1950,"",John Paul Young
+Australia,United Kingdom,1944,"Singer-Songwriter,Folk",Eric Bogle
+Australia,United Kingdom,1950,"",John Paul Young
 Australia,South Africa,1995,"",Troye Sivan
 Australia,United States,"","",Brother Love
 Australia,United States,"","",Chris Falson
@@ -68,13 +68,13 @@ Austria,Germany,1995,"",Petsch Moser
 Austria,United States,"","",Doozer
 Austria,United States,"","Avant-garde Metal,Alternative Metal",Fantômas
 Austria,United States,2007,"EBM,Electronic,Industrial",Blackcentr
-Bangladesh,England,"","",ArK
+Bangladesh,United Kingdom,"","",ArK
 Belgium,Australia,2010,"",Miles Away
 Belgium,Democratic Republic of the Congo,1973,Hip Hop,Ya Kid K
-Belgium,England,"","",Elton Motello
-Belgium,England,"","",Splinter
-Belgium,England,"","",The Bohicas
-Belgium,England,2000,"",Liquid
+Belgium,United Kingdom,"","",Elton Motello
+Belgium,United Kingdom,"","",Splinter
+Belgium,United Kingdom,"","",The Bohicas
+Belgium,United Kingdom,2000,"",Liquid
 Belgium,Finland,"","",Skyward
 Belgium,France,1924,"",Fud Leclerc
 Belgium,France,1985,"",Jonatan Cerrada
@@ -127,7 +127,7 @@ Denmark,Sweden,"","",Poets
 Denmark,United States,"","",PeeWee
 Denmark,United States,1980,"",Scatterbrain
 Denmark,United States,1997,"",Hush
-Egypt,England,2008,"Drum And Bass,Dubstep,Electro House,Drumstep",Feed Me
+Egypt,United Kingdom,2008,"Drum And Bass,Dubstep,Electro House,Drumstep",Feed Me
 Egypt,Italy,1925,"Pop,Soft Rock,World Music",Bob Azzam
 Estonia,Austria,"","",Anbuley
 Estonia,Germany,2000,"",Damage Inc.
@@ -179,10 +179,10 @@ France,Egypt,1934,"",George Moustaki
 France,Egypt,1938,"Chanson,French Pop,Pop,Rock,Rock 'N' Roll,Folk,Jazz,World Music",Richard Anthony
 France,Egypt,1939,"",Claude François
 France,Egypt,1944,Disco,Alec R. Constandinos
-France,England,"","",Jadis
-France,England,"",Drum And Bass,Spor
-France,England,1971,Pop,Charlotte Gainsbourg
-France,England,2006,"Rock,Shoegazing",Revolver
+France,United Kingdom,"","",Jadis
+France,United Kingdom,"",Drum And Bass,Spor
+France,United Kingdom,1971,Pop,Charlotte Gainsbourg
+France,United Kingdom,2006,"Rock,Shoegazing",Revolver
 France,Finland,"","",Overhead
 France,Finland,"","",Sig
 France,Finland,"",Hip Hop,Cheek
@@ -216,7 +216,7 @@ France,Portugal,"","",Halloween
 France,Republic of the Congo,"","",Bisso Na Bisso
 France,Republic of the Congo,1972,"",Passi
 France,Réunion,1967,"",Gérald De Palmas
-France,Scotland,"","",Rico
+France,United Kingdom,"","",Rico
 France,Senegal,1975,"",Faada Freddy
 France,Senegal,1975,"",Tété
 France,Serbia,"","",Jakarta
@@ -270,12 +270,12 @@ Germany,Canada,"","",Wednesday
 Germany,Canada,2006,"",The Rumours
 Germany,Croatia,1952,"Singer-Songwriter,Schlager,Chanson,Ballad,Pop,Rock,Hip Hop,Funk,Soul",Edo Zanki
 Germany,Czech Republic,1942,"Singer-Songwriter,Pop,Schlager",Erik Silvester
-Germany,England,"","",Oscar
-Germany,England,"","Electronic,Indie",IAMX
-Germany,England,"","Indie Rock,Britpop",The Twang
-Germany,England,"",Power Metal,IAmI
-Germany,England,1896,"Pop,Chanson,Comedy,Cabaret,Musical,Soundtrack/Movie",Friedrich Hollaender
-Germany,England,1989,"",Ancient Ceremony
+Germany,United Kingdom,"","",Oscar
+Germany,United Kingdom,"","Electronic,Indie",IAMX
+Germany,United Kingdom,"","Indie Rock,Britpop",The Twang
+Germany,United Kingdom,"",Power Metal,IAmI
+Germany,United Kingdom,1896,"Pop,Chanson,Comedy,Cabaret,Musical,Soundtrack/Movie",Friedrich Hollaender
+Germany,United Kingdom,1989,"",Ancient Ceremony
 Germany,Finland,"","",Lumo
 Germany,France,"","",Dionysos
 Germany,France,"","Brutal Death Metal,Death Metal,Heavy Metal",Bloodshed
@@ -310,7 +310,7 @@ Germany,Romania,1949,"",Peter Maffay
 Germany,Romania,1957,Synthpop,Michael Cretu
 Germany,Russia,"","",S.P.O.R.T.
 Germany,Russia,1897,"Schlager,Chanson,Soundtrack/Movie",Leo Monosson
-Germany,Scotland,"","",El Presidente
+Germany,United Kingdom,"","",El Presidente
 Germany,Spain,"","",Dj's At Work
 Germany,Spain,"","",Gadjo
 Germany,Spain,"","",Vega
@@ -361,19 +361,19 @@ Germany,United States,1997,"",Force Of Change
 Germany,United States,1998,"Indie Rock,Dream Pop",Viva Voce
 Germany,United States,2000,"",Now Denial
 Germany,Wales,"","",Jem
-India,England,"",Hip Hop,Manj Musik
-India,England,????,"",Mili Nair
+India,United Kingdom,"",Hip Hop,Manj Musik
+India,United Kingdom,????,"",Mili Nair
 India,Pakistan,"","",Javed Bashir
 India,United States,"","",Apache
 Ireland,Argentina,"","",Pier
 Ireland,Australia,"","Folk,Rock",Paul Kelly
 Ireland,Australia,1954,"",Johnny Logan
-Ireland,England,"","",Eden's Bridge
-Ireland,England,1949,"",Philip Lynott
-Ireland,England,1949,"Rock,Hard Rock,Pop,Heavy Metal,Folk,Psychedelic Rock",Phil Lynott
-Ireland,England,1950,Folk,Kevin Burke
-Ireland,England,1959,Folk,Brendan Perry
-Ireland,England,1961,Rock,The Edge
+Ireland,United Kingdom,"","",Eden's Bridge
+Ireland,United Kingdom,1949,"",Philip Lynott
+Ireland,United Kingdom,1949,"Rock,Hard Rock,Pop,Heavy Metal,Folk,Psychedelic Rock",Phil Lynott
+Ireland,United Kingdom,1950,Folk,Kevin Burke
+Ireland,United Kingdom,1959,Folk,Brendan Perry
+Ireland,United Kingdom,1961,Rock,The Edge
 Ireland,Germany,1986,"Hard Rock,Heavy Metal",McAuley Schenker Group
 Ireland,New Zealand,"","",The Bats
 Ireland,Poland,2002,"",Bodycall
@@ -395,9 +395,9 @@ Italy,Canada,"","",Did
 Italy,Canada,2003,Heavy Metal,Baroque
 Italy,Croatia,1933,"",Sergio Endrigo
 Italy,Denmark,"","",Alphabeat
-Italy,England,"","",The Creatures
-Italy,England,1963,"",The Rokes
-Italy,England,1979,Punk Rock,Sharks
+Italy,United Kingdom,"","",The Creatures
+Italy,United Kingdom,1963,"",The Rokes
+Italy,United Kingdom,1979,Punk Rock,Sharks
 Italy,Finland,"",Pop,Majuri
 Italy,Finland,"","World Music,Folk",Gjallarhorn
 Italy,France,"","",Raggio Di Luna
@@ -408,7 +408,7 @@ Italy,Libya,1938,Italian Folk,Franco Califano
 Italy,Libya,1944,"",Herbert Pagani
 Italy,Monaco,1984,"",Valerie Dore
 Italy,Russia,"","",Reflex
-Italy,Scotland,1972,"",Fish
+Italy,United Kingdom,1972,"",Fish
 Italy,Switzerland,1969,"",Robert Miles
 Italy,Turkey,1985,"",Wyvern
 Italy,United States,"","",Beverly
@@ -428,7 +428,7 @@ Italy,United States,2003,"",Lost
 Jamaica,Australia,"","",Chalice
 Jamaica,Cuba,1946,"",Rita Marley
 Jamaica,Czech Republic,"","",Sunshine
-Jamaica,England,1975,"",Julian Marley
+Jamaica,United Kingdom,1975,"",Julian Marley
 Jamaica,Germany,"","",Hawkeye
 Jamaica,United States,"","",Foundation
 Jamaica,United States,"","Country,Rock,R\u0026B,Boogie",Al Anderson
@@ -445,9 +445,9 @@ Japan,Australia,1964,"",Donna Burke
 Japan,Australia,1996,"Pop,Rock,Soul,New Wave",Sherbet
 Japan,Canada,"","Alternative Rock,Ambient",Mirror
 Japan,Canada,2007,"",Moev
-Japan,England,"","",Oranges & Lemons
-Japan,England,"","",Tomorrow
-Japan,England,1989,Pop,Dido
+Japan,United Kingdom,"","",Oranges & Lemons
+Japan,United Kingdom,"","",Tomorrow
+Japan,United Kingdom,1989,Pop,Dido
 Japan,Germany,"","Death Metal,Grindcore",Blood
 Japan,Italy,"","",Die!
 Japan,Malaysia,1983,"Pop,R\u0026B,Hip Hop",Che'Nelle
@@ -485,9 +485,9 @@ Mexico,Venezuela,"","",Hector Montaner
 Netherlands,Colombia,1981,"",Jody Bernal
 Netherlands,Croatia,"","",BoBo
 Netherlands,Czech Republic,2000,"",Brutus
-Netherlands,England,"","",Mark Foggo's Skasters
-Netherlands,England,"","",Solstice
-Netherlands,England,1935,"",Paul Van Vliet
+Netherlands,United Kingdom,"","",Mark Foggo's Skasters
+Netherlands,United Kingdom,"","",Solstice
+Netherlands,United Kingdom,1935,"",Paul Van Vliet
 Netherlands,Finland,"","",Frederik
 Netherlands,Germany,"","",Guerilla
 Netherlands,Germany,1981,"Electronic,Trance",Liz Kay
@@ -541,7 +541,7 @@ Serbia,Denmark,"","",Dominus
 Serbia,Sweden,1989,"Death Metal,Brutal Death Metal",Bloodbath
 Serbia,United States,"","",Kno
 South Africa,Canada,"","Electronic,Synthpop",In Dreams
-South Africa,England,"","",DJ Fresh
+South Africa,United Kingdom,"","",DJ Fresh
 South Africa,Israel,1979,"",Yoav
 South Africa,Namibia,"","",Juanita Du Plessis
 South Africa,Netherlands,1961,"",Stef Bos
@@ -558,9 +558,9 @@ Spain,Brazil,"","",Chakal
 Spain,Colombia,"","",Cali & El Dandee
 Spain,Dominican Republic,"","",Arianna Puello
 Spain,Dominican Republic,1982,"",Ilegales
-Spain,England,"","",Earthling
-Spain,England,"",Thrash Metal,Fury
-Spain,England,1951,"",Jeanette Dimech
+Spain,United Kingdom,"","",Earthling
+Spain,United Kingdom,"",Thrash Metal,Fury
+Spain,United Kingdom,1951,"",Jeanette Dimech
 Spain,Finland,"",Hip Hop,Are
 Spain,France,"","",Brigitte
 Spain,France,1971,Flamenco,José El Francés
@@ -665,57 +665,57 @@ United States,Denmark,1988,"Pop,Rock",Michael Learns To Rock
 United States,Dominica,1949,"",The Gaylords
 United States,Ecuador,1965,"",Gerardo
 United States,El Salvador,"","",Metatron
-United States,England,"","",Alexa Goddard
-United States,England,"","",Conflict
-United States,England,"","",Dominion
-United States,England,"","",Duncan James
-United States,England,"","",James Morrison
-United States,England,"","",Le Cassette
-United States,England,"","",Lock Up
-United States,England,"","",Monster Island
-United States,England,"","",Sam Gray
-United States,England,"","",Scanners
-United States,England,"","",Skin
-United States,England,"","",Soho
-United States,England,"","",Ultra
-United States,England,"","Dance,Funk,Hip Hop,Pop,Power Pop,Teen Pop",Five
-United States,England,"",Hard Rock,Stratus
-United States,England,"",Hardcore Punk,Pettybone
-United States,England,"",House,Michael Gray
-United States,England,"",Pop,Abigail (UK)
-United States,England,"","R\u0026B,Hip Hop",Lyric (UK)
-United States,England,"","Rock,Blues,Blues Rock,R\u0026B,Rock 'N' Roll,Psychedelic Rock,Jazz",Charlie Watts
-United States,England,"",Soft Rock,Paul Jones
-United States,England,1873,Vaudeville,Ada Jones
-United States,England,1903,Comedy,Bob Hope
-United States,England,1910,"",David Rose
-United States,England,1923,Jazz,Ralph Sharon
-United States,England,1938,"",Joe Brooks
-United States,England,1941,"",Ian Whitcomb
-United States,England,1942,"Jazz,Jazz Fusion,Classical,World Music,Rock,Blues,Latin,Bebop",John McLaughlin
-United States,England,1955,"",Brett Smiley
-United States,England,1956,"",H.R.
-United States,England,1962,"",Jon Cleary
-United States,England,1965,"",The Moments
-United States,England,1965,"Blues Rock,Hard Rock,Heavy Metal",Slash
-United States,England,1966,"",Mother Earth
-United States,England,1970,"",Alex Boyé
-United States,England,1970,"",Howard Jones
-United States,England,1970,"Folk Rock,Pop Rock,Soft Rock",America
-United States,England,1971,"",Doom
-United States,England,1975,Doom Metal,Cathedral
-United States,England,1978,"Alternative Rock,Indie Rock",Paul Banks
-United States,England,1979,"",Brett Anderson
-United States,England,1982,"Singer-Songwriter,Jazz,Pop,Indie Pop",Nellie McKay
-United States,England,1983,"",Impaler
-United States,England,1986,"Blues,Country Rock,Americana",The Notting Hillbillies
-United States,England,1987,"Doom Metal,Gothic Metal",Paradise Lost
-United States,England,1989,"Garage Rock,Grime,Hip Hop",Romeo
-United States,England,1995,"",Grapefruit
-United States,England,1995,Indie Rock,Longview
-United States,England,1999,"",South
-United States,England,2003,"",White
-United States,England,2006,"Doom Metal,Heavy Metal",Heaven & Hell
+United States,United Kingdom,"","",Alexa Goddard
+United States,United Kingdom,"","",Conflict
+United States,United Kingdom,"","",Dominion
+United States,United Kingdom,"","",Duncan James
+United States,United Kingdom,"","",James Morrison
+United States,United Kingdom,"","",Le Cassette
+United States,United Kingdom,"","",Lock Up
+United States,United Kingdom,"","",Monster Island
+United States,United Kingdom,"","",Sam Gray
+United States,United Kingdom,"","",Scanners
+United States,United Kingdom,"","",Skin
+United States,United Kingdom,"","",Soho
+United States,United Kingdom,"","",Ultra
+United States,United Kingdom,"","Dance,Funk,Hip Hop,Pop,Power Pop,Teen Pop",Five
+United States,United Kingdom,"",Hard Rock,Stratus
+United States,United Kingdom,"",Hardcore Punk,Pettybone
+United States,United Kingdom,"",House,Michael Gray
+United States,United Kingdom,"",Pop,Abigail (UK)
+United States,United Kingdom,"","R\u0026B,Hip Hop",Lyric (UK)
+United States,United Kingdom,"","Rock,Blues,Blues Rock,R\u0026B,Rock 'N' Roll,Psychedelic Rock,Jazz",Charlie Watts
+United States,United Kingdom,"",Soft Rock,Paul Jones
+United States,United Kingdom,1873,Vaudeville,Ada Jones
+United States,United Kingdom,1903,Comedy,Bob Hope
+United States,United Kingdom,1910,"",David Rose
+United States,United Kingdom,1923,Jazz,Ralph Sharon
+United States,United Kingdom,1938,"",Joe Brooks
+United States,United Kingdom,1941,"",Ian Whitcomb
+United States,United Kingdom,1942,"Jazz,Jazz Fusion,Classical,World Music,Rock,Blues,Latin,Bebop",John McLaughlin
+United States,United Kingdom,1955,"",Brett Smiley
+United States,United Kingdom,1956,"",H.R.
+United States,United Kingdom,1962,"",Jon Cleary
+United States,United Kingdom,1965,"",The Moments
+United States,United Kingdom,1965,"Blues Rock,Hard Rock,Heavy Metal",Slash
+United States,United Kingdom,1966,"",Mother Earth
+United States,United Kingdom,1970,"",Alex Boyé
+United States,United Kingdom,1970,"",Howard Jones
+United States,United Kingdom,1970,"Folk Rock,Pop Rock,Soft Rock",America
+United States,United Kingdom,1971,"",Doom
+United States,United Kingdom,1975,Doom Metal,Cathedral
+United States,United Kingdom,1978,"Alternative Rock,Indie Rock",Paul Banks
+United States,United Kingdom,1979,"",Brett Anderson
+United States,United Kingdom,1982,"Singer-Songwriter,Jazz,Pop,Indie Pop",Nellie McKay
+United States,United Kingdom,1983,"",Impaler
+United States,United Kingdom,1986,"Blues,Country Rock,Americana",The Notting Hillbillies
+United States,United Kingdom,1987,"Doom Metal,Gothic Metal",Paradise Lost
+United States,United Kingdom,1989,"Garage Rock,Grime,Hip Hop",Romeo
+United States,United Kingdom,1995,"",Grapefruit
+United States,United Kingdom,1995,Indie Rock,Longview
+United States,United Kingdom,1999,"",South
+United States,United Kingdom,2003,"",White
+United States,United Kingdom,2006,"Doom Metal,Heavy Metal",Heaven & Hell
 United States,Ethiopia,"","",Kenna
 United States,Finland,"","",Callisto
 United States,Finland,"","",Eddie B
@@ -836,11 +836,11 @@ United States,Puerto Rico,1980,"Reggaeton,Hip Hop",Yomo
 United States,Romania,1997,"",OCS
 United States,Russia,1886,"",Sophie Tucker
 United States,Russia,1956,"",Natasha Shneider
-United States,Scotland,"","",Danny Wilson
-United States,Scotland,"","",Pilot
-United States,Scotland,"","",Ray Wilson
-United States,Scotland,1952,"Alternative Rock,Experimental Rock,World Music",David Byrne
-United States,Scotland,1967,"Easy Listening,Musical,Pop",John Barrowman
+United States,United Kingdom,"","",Danny Wilson
+United States,United Kingdom,"","",Pilot
+United States,United Kingdom,"","",Ray Wilson
+United States,United Kingdom,1952,"Alternative Rock,Experimental Rock,World Music",David Byrne
+United States,United Kingdom,1967,"Easy Listening,Musical,Pop",John Barrowman
 United States,Singapore,1981,"",Tila Tequila
 United States,Slovenia,1984,"",Gramatik
 United States,South Africa,"","",Goldfish
@@ -875,7 +875,7 @@ Uruguay,Argentina,2001,"",Bajofondo
 Uruguay,Canada,1985,Heavy Metal,Alvacast
 Yugoslavia,Croatia,1977,"",Prljavo Kazalište
 Yugoslavia,Croatia,1988,"",Majke
-Yugoslavia,England,1963,"",Viktor Mastoridis
+Yugoslavia,United Kingdom,1963,"",Viktor Mastoridis
 Yugoslavia,Serbia,1979,"",Pekinška Patka
 Yugoslavia,Serbia,1980,"",Električni Orgazam
 Yugoslavia,Serbia,1984,"",Bajaga & Instruktori

@@ -32,12 +32,12 @@ listeTitresAxes = [{
         name: "PaysDebutCarriere",
         type: "String"
     }, {
-        name: "PaysNaissance",
+        name: "DernierPaysConnu",
         type: "String"
     }];
 
 
-d3.csv("data/data.csv", function (error, data) {
+d3.csv("data/superdatadeluxe.csv", function (error, data) {
 
     data.forEach(function (d) {
 
@@ -76,7 +76,7 @@ d3.csv("data/data.csv", function (error, data) {
 
     });
 
-    //console.log(cptPaysDebutCarriere);
+    console.log(cptPaysDebutCarriere);
     //console.log(cptPaysNaissance);
     //console.log(listeArtistesByGenre);
 
@@ -109,7 +109,7 @@ d3.csv("data/data.csv", function (error, data) {
         } else if (i === 2){
             y[name] = d3.scaleBand()
                     .domain(data.map(function (d) {
-                        return d.PaysNaissance;
+                        return d.DernierPaysConnu;
                     }))
                     .range([height, 0])
         }   
@@ -138,11 +138,9 @@ d3.csv("data/data.csv", function (error, data) {
                 //tab[dimensions[0]]=y[dimensions[0]](d.PaysNaissance);
                 //tab[dimensions[1]]=y[dimensions[1]](d.PaysDebutCarriere);
                 //tab[dimensions[2]]=y[dimensions[0]](d.PaysNaissance);
-
                 tab[dimensions[0]]=d.PaysNaissance;
                 tab[dimensions[1]]=d.PaysDebutCarriere;
-                tab[dimensions[2]]=d.PaysNaissance;
-                console.log(tab);
+                tab[dimensions[2]]=d.PaysNaissance;                
                 return tab;
             })
             .enter().append("path")
