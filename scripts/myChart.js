@@ -26,13 +26,13 @@ genre = [];
 listeArtistesByGenre = [];
 // Titres des axes
 listeTitresAxes = [{
-        name: "Birth",
+        name: "PaysNaissance",
         type: "String"
     }, {
-        name: "Famous",
+        name: "PaysDebutCarriere",
         type: "String"
     }, {
-        name: "Last known",
+        name: "PaysNaissance",
         type: "String"
     }];
 
@@ -40,6 +40,7 @@ listeTitresAxes = [{
 d3.csv("data/data.csv", function (error, data) {
 
     data.forEach(function (d) {
+
         // --------- Alimenter la bd avec tous les pays présents dans le csv--------- // 
         if (!nomPays.includes(d.PaysNaissance) && d.PaysNaissance !== "") {
             nomPays.push(d.PaysNaissance);
@@ -81,7 +82,6 @@ d3.csv("data/data.csv", function (error, data) {
 
     // Extract the list of dimensions we want to keep in the plot. Here I keep all except the column called Species
     dimensions = listeTitresAxes.map(function(d) { return d.name; });
-
     // For each dimension, I build a linear scale. I store all in a y object
     var y = {};
     
