@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -13,12 +13,23 @@ and open the template in the editor.
     </head>
     <body>
         <script src="https://d3js.org/d3.v4.min.js"></script>
-        <!-- Create a div where the graph will take place -->
         <h1 style="text-align: center;">Artists' geographical migrations</h1>
+        <h3>Countries I want to keep for the vizualisation:</h3>
+        
+        <button onclick="selectAll()" value="Select All">Select All</button>        
+        <button onclick="clearAll()" value="Deselect All">Deselect All</button>
+        
+        <br/><br/>
+        
+        <div id="div-checkboxes">
+        </div>
+        <!--input type="checkbox" id="selectCountry" onclick="cocherCountry()">France<br-->
         <div id="my_dataviz"></div>
+        
         <p style="font-style: italic;">Realization by Flore GRONDIN - M2 MIAGE
         <p style="font-style: italic;">Based on Wasabi API DB
-        <!--script src="scripts/exChart.js"></script-->
+        
+            <!--script src="scripts/exChart.js"></script-->
         <script src="scripts/myChart.js"></script>
     </body>
 </html>

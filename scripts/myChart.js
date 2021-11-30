@@ -40,14 +40,14 @@ listeTitresAxes = [{
 d3.csv("data/superdatadeluxe.csv", function (error, data) {
 
     data.forEach(function (d) {
-
+             
         // --------- Alimenter la bd avec tous les pays présents dans le csv--------- // 
         if (!nomPays.includes(d.PaysNaissance) && d.PaysNaissance !== "") {
             nomPays.push(d.PaysNaissance);
         } else if (!nomPays.includes(d.PaysDebutCarriere) && d.PaysDebutCarriere !== "") {
             nomPays.push(d.PaysDebutCarriere);
         }
-
+        
         // --------- Alimenter la bd avec tous les genres présents dans le csv--------- //  
         // Si le genre n'a pas été inséré dans la liste
         if (!listeGenres.includes(d.GenreMusique) && d.GenreMusique !== "") {
@@ -76,7 +76,9 @@ d3.csv("data/superdatadeluxe.csv", function (error, data) {
 
     });
 
-    console.log(cptPaysDebutCarriere);
+    genererCheckboxes(nomPays);
+
+    //console.log(cptPaysDebutCarriere);
     //console.log(cptPaysNaissance);
     //console.log(listeArtistesByGenre);
 
@@ -215,4 +217,41 @@ function recupererArtisteSelonGenre(genre, data) {
     } else if (data.GenreMusique === genre) {
         listeArtistesByGenre.push(data.Artiste);
     }
+}
+
+function selectAll() {
+    var checkboxes = document.querySelectorAll("input[id='selectCountry-checkboxes']");
+    for (let i=0; i<checkboxes.length; i++){
+        checkboxes[i].checked = true;
+    }
+}
+
+function clearAll() {
+    var checkboxes = document.querySelectorAll("input[id='selectCountry-checkboxes']");
+    for (let i=0; i<checkboxes.length; i++){
+        checkboxes[i].checked = false;
+    }
+}
+
+function genererCheckboxes(bdNoms){
+    bdNoms.forEach(d => {
+        // --------- Génération des checkbox--------- //
+        var myDiv = document.getElementById("div-checkboxes");
+        var checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        checkbox.id = "selectCountry-checkboxes";
+        
+        var label = document.createElement("label");
+        label.htmlFor = "id";
+
+        label.appendChild(document.createTextNode(d));
+
+        myDiv.appendChild(checkbox);
+        myDiv.appendChild(label);
+
+    })
+}
+
+function cocherCountry(){
+    
 }
