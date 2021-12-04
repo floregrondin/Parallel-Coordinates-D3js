@@ -29,6 +29,10 @@ listeTitresAxes = [{
 
 dataTab = [];
 
+var div = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
 d3.csv("data/superdatadeluxe.csv", function (error, data) {
 
     data.forEach(function (d) {
@@ -157,6 +161,20 @@ function draw(data) {
             .style("fill", "grey")
             .style("stroke", "black")
             .style("opacity", 0.1)
+            .on("mouseover", function (d) {
+                div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                div.html("<b>You're watching geographical migrations, congrats! </b>"+
+                        "<br/> <b>This is based on: </b>" + d.TitreAlbum + "<b> album info!</b>")
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+            });
 
     // Draw the axis:
     svg.selectAll("myAxis")
@@ -248,7 +266,7 @@ function clearAll() {
     // On réinit le tab des pays à afficher
     dataTab = [];
     // Mettre à jour l'affichage des checkbox
-    console.log("CLEAR",dataTab);
+    console.log("CLEAR", dataTab);
     nomPays.forEach(function (p) {
         var checkboxes = document.querySelectorAll("input[id='" + p + "']");
         for (let i = 0; i < checkboxes.length; i++) {
@@ -312,7 +330,7 @@ function genererSelect(listeGenres) {
         var option = document.createElement("option");
         option.value = d;
         option.text = d;
-        
+
         selectbox.appendChild(option);
     });
     var optionAllGenres = document.createElement("option");
@@ -339,10 +357,10 @@ function updateChanges() {
     d3.select("svg").remove();
     d3.csv("data/superdatadeluxe.csv", function (error, data) {
         data.forEach(function (d) {
-            dataTab.forEach(function(m){
+            dataTab.forEach(function (m) {
                 if (m.id === d.PaysNaissance
                         || m.id === d.PaysDebutCarriere
-                        || m.id === d.DernierPaysConnu){
+                        || m.id === d.DernierPaysConnu) {
                     addData(d);
                 }
             });
@@ -361,23 +379,4 @@ function updateChanges() {
 function addData(d) {
     // Si le tab contient déjà des pays
     dataTab.push(d);
-}
-
-function brushstart() {
-    d3.event.sourceEvent.stopPropagation();
-}
-
-// Handles a brush event, toggling the display of foreground lines.
-function brush() {
-    var actives = dimensions.filter(function (p) {
-        return !y[p].brush.empty();
-    }),
-            extents = actives.map(function (p) {
-                return y[p].brush.extent();
-            });
-    foreground.style("display", function (d) {
-        return actives.every(function (p, i) {
-            return extents[i][0] <= d[p] && d[p] <= extents[i][1];
-        }) ? null : "none";
-    });
 }
