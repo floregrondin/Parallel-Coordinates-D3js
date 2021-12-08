@@ -68,8 +68,6 @@ d3.csv("data/superdatadeluxe.csv", function (error, data) {
         alimenterDico(cptPaysDebutCarriere, d.PaysNaissance);
         alimenterDico(cptPaysNaissance, d.PaysDebutCarriere);
 
-        recupererArtisteSelonGenre("Electronic", d);
-
         addData(d);
     });
 
@@ -135,7 +133,7 @@ function draw(data) {
     function path(d) {
 
         return d3.line()(dimensions.map(function (p) {
-            return [x(p), y[p](d[p])];
+            return [x(p), y[p](d[p]) + y[p].bandwidth() / 2];
         }));
     }
 
@@ -214,30 +212,6 @@ function alimenterDico(dico, paysBd) {
 }
 
 /**
- * Permet de récupérer une liste d'artistes dont le genre musical correspond à celui donné en entrée
- * @param {type} genre Le genre musical
- * @param {type} data La donnée issue du csv (doit comporter les champs GenreMusique et Artiste)
- */
-function recupererArtisteSelonGenre(genre, data) {
-    // Pour stocker les genres compris dans des tableaux de genres dans le csv
-    genreIndiv = [];
-    // Si le genre est dans un tab dans le csv
-    if (data.GenreMusique.includes(",")) {
-        // Alors on éclate le tab
-        genreIndiv = data.GenreMusique.split(",");
-        // Pour chaque genre du tab
-        for (g in genreIndiv) {
-            // Si le genre n'est pas une chaine de caractères vide et qu'il correspond au genre recherché
-            if (genreIndiv[g] !== "" && genreIndiv[g] === genre) {
-                listeArtistesByGenre.push(data.Artiste);
-            }
-        }
-    } else if (data.GenreMusique === genre) {
-        listeArtistesByGenre.push(data.Artiste);
-    }
-}
-
-/**
  * Permet de sélectionner toutes les cases à cocher
  * @returns {undefined}
  */
@@ -289,13 +263,21 @@ function genererCheckboxes(bdNoms) {
         
         // Pour toute action sur la checkbox
         checkbox.addEventListener('change', (event) => {
-            d3.csv("data/superdatadeluxe.csv", function (error, data) {
-                data.forEach(function (d) {
-                    if (d.PaysNaissance === event.originalTarget.id){
-                        addData(d);
-                    }
+            if (checkbox.checked === true){
+                d3.csv("data/superdatadeluxe.csv", function (error, data) {
+                    data.forEach(function (d) {
+                        if (d.PaysNaissance === event.originalTarget.id) {
+                            addData(d);
+                        }
+                    });
                 });
-            });
+            } else if (checkbox.checked === false){
+                for (var i = 0; dataTab.length; i++){
+                    do {
+                        dataTab.splice(i,1);
+                    } while (dataTab[i].PaysNaissance === checkbox.id)
+                }
+            }
         });
 
         myDiv.appendChild(checkbox);
