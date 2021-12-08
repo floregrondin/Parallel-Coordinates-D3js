@@ -44,7 +44,7 @@ d3.csv("data/superdatadeluxe.csv", function (error, data) {
             nomPays.push(d.PaysDebutCarriere);
         }
 
-        // --------- Alimenter la bd avec tous les genres présents dans le csv--------- //  
+        // --------- Alimenter la bd avec tous les genres présents dans le csv--------- // 
         // Si le genre n'a pas été inséré dans la liste
         if (!listeGenres.includes(d.GenreMusique) && d.GenreMusique !== "") {
             // Et que le genre dans le csv est un tab de genres
@@ -289,8 +289,6 @@ function genererCheckboxes(bdNoms) {
         
         // Pour toute action sur la checkbox
         checkbox.addEventListener('change', (event) => {
-            console.log("mon event", event);
-            console.log("idPays", event.originalTarget.id);
             d3.csv("data/superdatadeluxe.csv", function (error, data) {
                 data.forEach(function (d) {
                     if (d.PaysNaissance === event.originalTarget.id){
@@ -329,13 +327,20 @@ function genererSelect(listeGenres) {
     
     // Pour toute action sur la checkbox
     selectbox.addEventListener('change', (event) => {
-        dataTab = [];
         d3.csv("data/superdatadeluxe.csv", function (error, data) {
-            data.forEach(function (d) {
-                if (d.GenreMusique.includes(event.explicitOriginalTarget.selectedOptions[0].value)){
+
+            if (event.explicitOriginalTarget.selectedOptions[0].value === "All genres") {
+                data.forEach(function (d) {
                     addData(d);
-                }
-            });
+                });
+            } else {
+                dataTab = [];
+                data.forEach(function (d) {
+                    if (d.GenreMusique.includes(event.explicitOriginalTarget.selectedOptions[0].value)) {
+                        addData(d);
+                    }
+                });
+            }
         });
     });
     selectbox.appendChild(optionAllGenres);
