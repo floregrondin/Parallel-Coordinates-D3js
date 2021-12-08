@@ -1,6 +1,6 @@
 // set the dimensions and margins of the graph
 var margin = {top: 30, right: 10, bottom: 10, left: 10},
-        width = 1000 - margin.left - margin.right,
+        width = 900 - margin.left - margin.right,
         height = 700 - margin.top - margin.bottom;
 
 // Nb d'occurences pour chaque pays de naissance d'1 artiste
@@ -63,7 +63,7 @@ d3.csv("data/superdatadeluxe.csv", function (error, data) {
                 listeGenres.push(d.GenreMusique);
             }
         }
-
+       
         // --------- Classer les pays selon la fréquence d'apparition --------- //
         alimenterDico(cptPaysDebutCarriere, d.PaysNaissance);
         alimenterDico(cptPaysNaissance, d.PaysDebutCarriere);
@@ -76,15 +76,9 @@ d3.csv("data/superdatadeluxe.csv", function (error, data) {
     genererCheckboxes(nomPays);
     genererSelect(listeGenres);
     draw(dataTab);
-    //console.log(cptPaysDebutCarriere);
-    //console.log(cptPaysNaissance);
-    //console.log(listeArtistesByGenre);
-
-
 });
 
 function draw(data) {
-
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
             .append("svg")
@@ -92,8 +86,8 @@ function draw(data) {
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform",
-                    "translate(" + margin.left + "," + margin.top + ")");
-
+                    "translate(" + margin.left + "," + margin.top + ")")
+    
     // Extract the list of dimensions we want to keep in the plot. Here I keep all except the column called Species
     dimensions = listeTitresAxes.map(function (d) {
         return d.name;
@@ -158,14 +152,14 @@ function draw(data) {
             })
             .enter().append("path")
             .attr("d", path)
-            .style("fill", "grey")
-            .style("stroke", "black")
-            .style("opacity", 0.1)
+            .style("fill", "none")
+            .style("stroke", "blue")
+            // Gestion du tooltip
             .on("mouseover", function (d) {
                 div.transition()
                         .duration(200)
                         .style("opacity", .9);
-                div.html("<b>You're watching geographical migrations, congrats! </b>"+
+                div.html("<b>You're watching a geographical migration, congrats! </b>"+
                         "<br/> <b>This is based on: </b>" + d.TitreAlbum + "<b> album info!</b>")
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px");
@@ -196,7 +190,7 @@ function draw(data) {
             .text(function (d) {
                 return d;
             })
-            .style("fill", "black")
+            .style("fill", "black");
 
 }
 /**
@@ -266,7 +260,6 @@ function clearAll() {
     // On réinit le tab des pays à afficher
     dataTab = [];
     // Mettre à jour l'affichage des checkbox
-    console.log("CLEAR", dataTab);
     nomPays.forEach(function (p) {
         var checkboxes = document.querySelectorAll("input[id='" + p + "']");
         for (let i = 0; i < checkboxes.length; i++) {
@@ -290,27 +283,22 @@ function genererCheckboxes(bdNoms) {
         checkbox.id = d;
         checkbox.checked = true;
 
-        // Pour toute action sur la checkbox
-        checkbox.addEventListener('change', (event) => {
-            // Si la checkbox n'est pas cochée
-            if (event.currentTarget.checked) {
-                addData(event.currentTarget);
-            } else {
-                listeData = getData();
-                for (var i = 0; i < listeData.length; i++) {
-                    if (listeData[i].PaysNaissance === checkbox.id
-                            || listeData[i].PaysDebutCarriere === checkbox.id
-                            || listeData[i].DernierPaysConnu === checkbox.id) {
-                        listeData.splice(i, 1);
-                        i--;
-                    }
-                }
-            }
-        });
         var label = document.createElement("label");
         label.htmlFor = "id";
-
         label.appendChild(document.createTextNode(d));
+        
+        // Pour toute action sur la checkbox
+        checkbox.addEventListener('change', (event) => {
+            console.log("mon event", event);
+            console.log("idPays", event.originalTarget.id);
+            d3.csv("data/superdatadeluxe.csv", function (error, data) {
+                data.forEach(function (d) {
+                    if (d.PaysNaissance === event.originalTarget.id){
+                        addData(d);
+                    }
+                });
+            });
+        });
 
         myDiv.appendChild(checkbox);
         myDiv.appendChild(label);
@@ -333,10 +321,23 @@ function genererSelect(listeGenres) {
 
         selectbox.appendChild(option);
     });
+    // Création d'une option par défaut (tous les genres)
     var optionAllGenres = document.createElement("option");
     optionAllGenres.value = "All genres";
     optionAllGenres.text = "All genres";
     optionAllGenres.selected = "selected";
+    
+    // Pour toute action sur la checkbox
+    selectbox.addEventListener('change', (event) => {
+        dataTab = [];
+        d3.csv("data/superdatadeluxe.csv", function (error, data) {
+            data.forEach(function (d) {
+                if (d.GenreMusique.includes(event.explicitOriginalTarget.selectedOptions[0].value)){
+                    addData(d);
+                }
+            });
+        });
+    });
     selectbox.appendChild(optionAllGenres);
 }
 
@@ -350,25 +351,12 @@ function getData() {
 
 
 /**
- * 
+ * Permet de récupérer les tuples du csv concernés et de redessiner le graph
  * @returns {undefined}
  */
 function updateChanges() {
     d3.select("svg").remove();
-    d3.csv("data/superdatadeluxe.csv", function (error, data) {
-        data.forEach(function (d) {
-            dataTab.forEach(function (m) {
-                if (m.id === d.PaysNaissance
-                        || m.id === d.PaysDebutCarriere
-                        || m.id === d.DernierPaysConnu) {
-                    addData(d);
-                }
-            });
-        });
-    });
-    console.log("fini");
-    console.log("APRES MODIF", dataTab);
-    draw(dataTab);
+    draw(getData());
 }
 
 /**
@@ -377,6 +365,5 @@ function updateChanges() {
  * @returns {undefined}
  */
 function addData(d) {
-    // Si le tab contient déjà des pays
     dataTab.push(d);
 }
